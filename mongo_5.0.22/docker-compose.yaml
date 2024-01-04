@@ -1,0 +1,12 @@
+version: "3.3"
+
+services:
+  mongodb:
+    image: mongo:5.0.22
+    container_name: mongodb
+    environment:
+      TZ: Asia/Ho_Chi_Minh
+    volumes:
+      - /dockerd/mongodb_5.0.22:/data/db
+    restart: unless-stopped
+    network_mode: host
