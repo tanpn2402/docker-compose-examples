@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  ingress:
+    image: nginx
+    container_name: nginx-ssl
+    restart: unless-stopped
+    volumes:
+      - ./ssl:/etc/nginx/certs
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    environment:
+      TZ: Asia/Ho_Chi_Minh
+    network_mode: host
