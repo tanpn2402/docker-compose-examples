@@ -1,0 +1,26 @@
+version: '3'
+services:
+  postgres:
+    # env_file:
+    #   - variables.env
+    image: postgres
+    container_name: pg
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-db}
+      POSTGRES_USER: ${POSTGRES_USER:-user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - pgnw
+    ports:
+      - "5432:5432"
+networks:
+  pgnw:
+volumes:
+  pgdata:
+    driver: local
+    driver_opts:
+      type: none
+      device: /dockerd/pgdata   # Change this directory by yourself
+      o: bind
