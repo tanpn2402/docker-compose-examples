@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  web:
+    image: tomcat:9.0.44
+    restart: unless-stopped
+    container_name: iws-app
+    volumes:
+      - ./webapps:/usr/local/tomcat/webapps
+      # iws-app logs
+      - /logs/app:/ttl/logs/mobile/:rw
+      # Tomcat logs
+      - /logs/tomcat:/usr/local/tomcat/logs
+      # iws-app requires Oracle Java 8
+      - /media/data/java/jdk1.8.0_181:/usr/java
+    ports:
+      - '8084:8080'
+    environment:
+      TZ: Asia/Ho_Chi_Minh
+      JRE_HOME: /usr/java
+      
