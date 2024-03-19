@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  hoppscotch-mail:
+    image: schickling/mailcatcher
+    container_name: hoppscotch-mail
+    ports:
+      - 61080:1080
+      - 61025:1025  # admin
+    environment:
+      TZ: Asia/Ho_Chi_Minh
+    networks:
+      - mail-nw
+
+networks:
+  mail-nw:
+    driver: bridge
