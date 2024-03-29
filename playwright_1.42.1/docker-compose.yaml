@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.42.1-jammy
+    ipc: host
+    env_file:
+      - .env
+    volumes:
+      - ${TEST_DIRECTORY}:/test_dir
+    command: /bin/bash -c "cd test_dir && npm i && URL='${TEST_URL}' CI=true npx playwright test"
