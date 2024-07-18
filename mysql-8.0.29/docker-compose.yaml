@@ -9,3 +9,12 @@ services:
       - mysql.env
     ports:
       - "3306:3306"
+
+  mysql_backup:
+    image: mysql:8.0.29
+    container_name: mysql_backup_8.0.29
+    restart: unless-stopped
+    env_file:
+      - mysql_backup.env
+    ports:
+      - "3307:3306"
