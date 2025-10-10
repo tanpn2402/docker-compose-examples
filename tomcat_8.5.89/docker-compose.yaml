@@ -1,0 +1,25 @@
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    container_name: iws_app
+    volumes:
+      # .war
+      - ./webapps/mobile.war:/usr/local/tomcat/webapps/mobile.war
+      # App logs
+      - /app/mobile/:/ttllogs/mobile/
+      # Tomcat logs
+      # - /logs/tomcat:/usr/local/tomcat/logs
+      # Oracle Java 8
+      - /usr/lib/jvm/jdk1.8.0_391:/usr/java
+      # External config: mobile-config.ini
+      - ./mobile-config.ini:/ttl/config/winvest/mobile-config.ini
+    ports:
+      - 8080:8080
+    environment:
+      TZ: Asia/Ho_Chi_Minh
+      JRE_HOME: /usr/java
