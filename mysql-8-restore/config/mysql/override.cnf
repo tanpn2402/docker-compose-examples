@@ -1,0 +1,43 @@
+[mysqld]
+log_bin_trust_function_creators = 1
+default-time-zone       = "+07:00"
+mysqlx_max_connections  = 300
+max_connections         = 200
+lower_case_table_names  = 1
+sql_mode                = ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,PIPES_AS_CONCAT,ANSI_QUOTES,PIPES_AS_CONCAT,IGNORE_SPACE
+init-connect            = 'SET NAMES utf8mb4'
+init_connect            = 'SET collation_connection = utf8mb4_bin'
+character-set-server    = utf8mb4
+collation-server        = utf8mb4_bin
+skip-character-set-client-handshake
+
+innodb_buffer_pool_instances = 3
+innodb_page_size        = 64K
+innodb_buffer_pool_size = 3G
+max_allowed_packet      = 256M
+thread_cache_size       = 14
+innodb_io_capacity      = 400
+innodb_io_capacity_max  = 800
+
+innodb_file_per_table   = 1
+#table_open_cache : add new
+table_open_cache        = 4000
+table_definition_cache  = 5000
+open_files_limit        = 10000
+innodb_log_file_size    = 384M
+innodb_redo_log_capacity= 384M
+innodb_log_buffer_size  = 512M
+
+sort_buffer_size        = 32M
+read_buffer_size        = 256K
+join_buffer_size        = 1G
+tmp_table_size          = 1G
+max_heap_table_size     = 1G
+max_sort_length         = 4096
+net_buffer_length       = 8K
+read_rnd_buffer_size    = 256K
+innodb_rollback_on_timeout = 1
+thread_stack = 262144
+performance_schema_max_file_handles = 0
+#innodb_flush_method     = O_DIRECT
+#innodb_flush_neighbors  = 1
